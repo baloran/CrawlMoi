@@ -1,5 +1,6 @@
 <meta charset="utf-8"/>
-<?php require_once 'core/db.php';?>
+<?php require_once 'core/db.php'; require 'simple_html_dom.php';?>
+
 <a href="search.php">Recherche</a>
 <form action="index.php"method="POST">
 <input type="text" name="url"/>
@@ -18,19 +19,34 @@ $img_png = '#.png#';
 
 if (!empty($_POST)){
 	extract($_POST);
-
-
-require 'simple_html_dom.php';
-$html = new simple_html_dom();
-$html->load_file($url);
-foreach ($html->find('a')as $desc){
-		$req = $db->prepare("INSERT INTO url (url) VALUES (:url)"); //préparation de la requète
+	if (!empty($url)){
+		$url_sans_http = "#^http://#";
+		preg_match($pattern, $subject)
+	}
+if ($valid == true){
+	$html = new simple_html_dom();
+	$html->load_file($url);
+	$ip_url = gethostbyname($url);
+	foreach ($html->find('html')as $desc){
+		$title = $html->find('title', 0);
+		foreach ($html->find('a') as $href){
+			
+		$req = $db->prepare("INSERT INTO url (url, title,ip) VALUES (:url,:title, :ip)"); //préparation de la requète
 		$req->execute(array(
-			'url' => $desc->href,
-		)); //execution de la requète
+					'url' => $href->href,
+					'title'=> $title->plaintext,
+					'ip' =>$ip_url,
+		)); //execution de la requète */
+		
+		}	
+	}
+}
+else {
+	echo 'mauvaise requete';
 }
 }
 else
 {
 	echo 'Veuillez entrer une url';
+	
 }
