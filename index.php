@@ -1,4 +1,5 @@
 <meta charset="utf-8"/>
+<?php require_once 'core/db.php';?>
 <a href="search.php">Recherche</a>
 <form action="index.php"method="POST">
 <input type="text" name="url"/>
@@ -14,20 +15,7 @@ $img_png = '#.png#';
  * Fin des Preg
  */
 
-/*
- * Base de donnée
- */
 
-$database = 'mysql:host=localhost;dbname=crawler';
-$user_db  = 'root';
-$pass_db  = '';
-$options  = '';
-
-	$db = new PDO($database, $user_db, $pass_db) or die (print_r($db->errorInfo()));
-	$db->exec('SET NAMES utf8');
-/*
- * Fin Base de donnée
- */
 if (!empty($_POST)){
 	extract($_POST);
 
