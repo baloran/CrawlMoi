@@ -19,14 +19,20 @@ $img_png = '#.png#';
 
 if (!empty($_POST)){
 	extract($_POST);
-	if (!empty($url)){
-		$url_sans_http = "#^http://#";
-		preg_match($pattern, $subject)
+	$url_sans_http = "#^http://#";
+	$test_url = preg_match($url_sans_http, $url);
+	if ($test_url == 0){
+		$url_valid = "http://".$url;
+		$valid = true;
+	}
+	if ($test_url == 1){
+		$valid = true;
+		$url_valid = $url;
 	}
 if ($valid == true){
 	$html = new simple_html_dom();
-	$html->load_file($url);
-	$ip_url = gethostbyname($url);
+	$html->load_file($url_valid);
+	$ip_url = gethostbyname($url_valid);
 	foreach ($html->find('html')as $desc){
 		$title = $html->find('title', 0);
 		foreach ($html->find('a') as $href){

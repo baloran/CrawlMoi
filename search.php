@@ -20,8 +20,20 @@ if (!empty($_POST)){
 }
 else{
 	$req_liste = $db->query('SELECT * FROM url');
-	while($search = $req_liste->fetch()){
-	echo $search['url'].'<br />'; 
+	
+	while ($h = $req_liste->fetch()){
+		$rh = $h['url'];
+		$delimiter = ".";
+		explode($delimiter, $rh);
+		$jpg_match = "#.jpg$#";
+		$jpg_h = preg_match($jpg_match, $rh);
+		foreach ($rh as $j){
+			echo $j;
+		}
+		//print_r($jpg_h).'<br />';
 	}
+	//while($search = $req_liste->fetch()){
+	//echo "<a href=".$search['url'].">".$search['url']."</a>".'<br />'; 
+	//}
 }
 if (isset($req_list))$req_liste->closeCursor();
