@@ -1,5 +1,5 @@
 <meta charset="utf-8"/>
-<?php require_once 'core/db.php'; require 'simple_html_dom.php';?>
+<?php require_once 'load.php'; ?>
 
 <a href="search.php">Recherche</a>
 <form action="index.php"method="POST">
