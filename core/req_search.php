@@ -1,5 +1,5 @@
 <?php 
-require_once 'load.php';
+require_once '../load.php';
 if (!empty($_POST)){
 	extract($_POST);
 	$search = strip_tags($search);
@@ -7,14 +7,14 @@ if (!empty($_POST)){
 	if ($req->rowCount()>0){
 		while($data = $req->fetch(PDO::FETCH_OBJ)){
 			echo '<h2>'.$data->url.'</h2>';
+			echo '<p>'.$data->title.'</p>';
 			echo '<hr />';
 		}
 	}
 	else {
-		echo 'aucun resultat';
+		echo '<h2>aucun resultat</h2>';
 	}
 }
 else{
-	echo 'aucun resultat';	
+	echo '<h2>aucun resultat</h2>';	
 }
-?>
