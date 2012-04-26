@@ -1,3 +1,10 @@
+<?php
+/*
+ * Fichier: index.php
+ * Author: Baloran
+ * Url: http://baloran.fr
+ */
+?>
 <meta charset="utf-8"/>
 <?php require_once 'load.php'; ?>
 
@@ -53,6 +60,13 @@ else {
 }
 else
 {
+	$html = new simple_html_dom();
+		$html->load_file("http://grafikart.fr");
+		$html->find('html');
+		foreach ($html->find('a[title]') as $href){
+				echo $href;
+			}
+
 	echo 'Veuillez entrer une url';
 	
 }

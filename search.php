@@ -1,3 +1,10 @@
+<?php
+/*
+ * Fichier: search.php
+ * Author: Baloran
+ * Url: http://baloran.fr
+ */
+?>
 <!DOCTYPE>
 <html>
 	<head>

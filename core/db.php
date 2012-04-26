@@ -1,7 +1,11 @@
 <?php
 /*
-* Base de donnée
-*/
+ * Fichier: db.php
+ * Author: Baloran
+ * Url: http://baloran.fr
+ * Ce fichier permet la connexion a la base de donnée
+ */
+
 
 $database = 'mysql:host=localhost;dbname=crawler';
 $user_db  = 'root';
